@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ── Tokens BSR Lab — DA « Encre & Réiatsu » (CLAUDE.md §3.1) ────────── */
+:root {
+  --bsr-ink: #0b0b0e;
+  --bsr-ink-2: #131318;
+  --bsr-ink-3: #1a1a20;
+  --bsr-border: #26262c;
+  --bsr-paper: #f5f0e8;
+  --bsr-paper-dim: #b8b2a4;
+  --bsr-muted: #8a8578;
+  --bsr-faint: #5a564c;
+  --bsr-reiatsu: #f97316;
+  --bsr-blood: #c43a2e;
+  --bsr-steel: #3a3a40; /* grade B, jauges faibles */
+
+  /* Mapping shadcn/ui */
+  --background: var(--bsr-ink);
+  --foreground: var(--bsr-paper);
+  --card: var(--bsr-ink-2);
+  --card-foreground: var(--bsr-paper);
+  --popover: var(--bsr-ink-2);
+  --popover-foreground: var(--bsr-paper);
+  --primary: var(--bsr-reiatsu);
+  --primary-foreground: var(--bsr-ink);
+  --secondary: var(--bsr-ink-3);
+  --secondary-foreground: var(--bsr-paper-dim);
+  --muted: var(--bsr-ink-3);
+  --muted-foreground: var(--bsr-muted);
+  --accent: var(--bsr-ink-3);
+  --accent-foreground: var(--bsr-paper);
+  --destructive: var(--bsr-blood);
+  --destructive-foreground: var(--bsr-paper);
+  --border: var(--bsr-border);
+  --input: var(--bsr-border);
+  --ring: var(--bsr-reiatsu);
+  --radius: 10px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Utilitaires directs : bg-bsr-ink-2, text-bsr-paper, text-bsr-reiatsu… */
+  --color-bsr-ink: var(--bsr-ink);
+  --color-bsr-ink-2: var(--bsr-ink-2);
+  --color-bsr-ink-3: var(--bsr-ink-3);
+  --color-bsr-border: var(--bsr-border);
+  --color-bsr-paper: var(--bsr-paper);
+  --color-bsr-paper-dim: var(--bsr-paper-dim);
+  --color-bsr-muted: var(--bsr-muted);
+  --color-bsr-faint: var(--bsr-faint);
+  --color-bsr-reiatsu: var(--bsr-reiatsu);
+  --color-bsr-blood: var(--bsr-blood);
+  --color-bsr-steel: var(--bsr-steel);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Titres, grades, scores : serif italique tranchant (§3.2) */
+@utility heading-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+/* Labels / eyebrows (§3.2) */
+@utility eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--bsr-muted);
+}
+
+/* Chiffres tabulaires sur toutes les stats (§3.2) */
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Glow orange discret — badge S et score final uniquement (§3.4) */
+@utility glow-reiatsu {
+  box-shadow: 0 0 24px 0 rgb(249 115 22 / 0.25);
+}

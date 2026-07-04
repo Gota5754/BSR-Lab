@@ -119,29 +119,37 @@ bsr-stamp-rater/
 
 ### 5.1 Données de jeu (repo, TypeScript)
 
+Mécaniques réelles du jeu (validées par Mathieu, 2026-07) :
+- **Termes techniques en anglais** : stats (ATK, ATK%, DEF, DEF%, HP, HP%, Crit Rate, Crit DMG, Ultimate Charge Rate, Ailment DMG Bonus, Slash/Thrust/Strike/Spirit DMG Bonus), types de dégâts (Slash/Thrust/Strike/Spirit), rôles (Full Assault/Support/Tactic), noms de sets et de passifs. Seuls les textes d'UI sont en français.
+- Chaque set possède 3 pièces : **Stamp I / II / III**. Basic stats : I = ATK (fixe) + 2e aléatoire parmi DEF/HP/DEF%/HP%/ATK%/(Slash|Thrust|Strike|Spirit) DMG Bonus ; II = DEF (fixe) + 2e parmi ATK/ATK%/DEF%/HP/HP%/Crit Rate/Crit DMG ; III = HP (fixe) + 2e parmi ATK/ATK%/DEF/DEF%/HP%/Ultimate Charge Rate/Ailment DMG Bonus. Seule la 2e basic stat monte avec le niveau du stamp (max 30).
+- **Équipement** : un personnage équipe exactement 3 stamps (I/II/III) d'un MÊME set + 1 **core stamp** (slot séparé, non modélisé pour l'instant). Les paliers de bonus 2p/3p existent mais tout le monde joue les 3 pièces → un seul texte `bonus` par set. Chaque personnage a une liste de sets recommandés (ex. Ichigo Bankai : Ready to Go > Rising Black Moon).
+- Chaque stamp a 4 substats parmi 10 : ATK/ATK%/DEF/DEF%/HP/HP%/Crit Rate/Crit DMG/Ultimate Charge Rate/Ailment DMG Bonus. **Pas de rolls** : valeur de base fixe par stat ; aux niv 10/15/20 une substat aléatoire « évolue » (+1× sa base), au niv 25 les 4 évoluent. À l'ascension niv 25 le stamp gagne 1 **passif 6★** aléatoire (liste complète dans `data/stamp-passives.ts`).
+- Scoring : score ABSOLU — 100 = stamp parfait niv 30 (4 meilleures substats, 3 évolutions simples sur la BIS, +1 général du niv 25, passif BIS). Le rater raisonne en nb d'évolutions, jamais en valeurs chiffrées. Un « potentiel » séparé (qualité du tirage des 4 substats) aide à repérer les stamps niv 1 à investir. Constantes dans `lib/scoring/weights.ts`.
+
 ```ts
 type StampSet = {
   id: string; name: string;
-  bonus2pc: string; bonus4pc: string;
+  bonus: string;                             // bonus 3 pièces (le seul cas réel)
   imageUrl: string;
 };
 
-type Substat = {
-  id: string; name: string; isPercent: boolean;
-  rollMin: number; rollMax: number; maxRolls: number;
-};
+type Stat = { id: StatId; name: string; isPercent: boolean };
 
 type Character = {
   id: string; name: string;
-  element: string; role: string; rarity: string;
+  damageType: 'Slash'|'Thrust'|'Strike'|'Spirit';
+  role: 'Full Assault'|'Support'|'Tactic';
+  rarity: string;
   releaseDate: string;                       // sortie ~toutes les 3 semaines
+  imageUrl: string;
   weapon: { name: string; stats: string[]; passive: string };
   recommendedSets: Array<{                   // historique : cas Ichigo Bankai → set Kenpachi
     setId: string; priority: number;
     note?: string; sincePatch: string;
   }>;
-  mainStats: { slot4: string[]; slot5: string[]; slot6: string[] };
-  statWeights: Record<string, number>;       // pondérations pour le rater (0 à 1)
+  recommendedBasicStats: Record<'I'|'II'|'III', StatId[]>; // 2e basic stat conseillée par pièce
+  statWeights: Partial<Record<StatId, number>>; // pondérations du rater (0 à 1), sur le pool de substats
+  recommendedPassives: string[];              // passifs 6★ BIS (ids de data/stamp-passives.ts)
   passives: Array<{ name: string; description: string }>;
   buildNotes?: string;                        // markdown
 };
@@ -152,10 +160,9 @@ type TierEntry = {
   note?: string; patchVersion: string;
 };
 
-type UpgradeCost = {
-  fromLevel: number; toLevel: number;
-  materials: Array<{ materialId: string; qty: number }>;
-};
+// Coûts de progression (EXP, Kans, essences, tamahagane, arts, omamori,
+// pulls) : tables réelles typées dans data/resources.ts
+// (source bsr-calculator.vercel.app — crédits @enveelive, @Ganxo012, @Joker).
 ```
 
 Workflow d'ajout d'un personnage : créer `data/characters/<id>.ts`, remplir l'objet typé (TS refuse le build si un champ manque), ajouter l'image WebP, push → déploiement auto Vercel. Les composants passent exclusivement par `lib/data/` (repository pattern) pour permettre une migration future vers CMS/Supabase sans refonte.
@@ -164,9 +171,11 @@ Workflow d'ajout d'un personnage : créer `data/characters/<id>.ts`, remplir l'o
 
 ```ts
 type UserStamp = {
-  id: string; setId: string; slot: number;
-  mainStat: string;
-  substats: Array<{ id: string; value: number }>;
+  id: string; setId: string; piece: 'I'|'II'|'III';
+  level: number;
+  secondBasicStat: StatId;
+  substats: Array<{ id: StatId; evolutions: number }>; // évolutions SIMPLES (niv 10/15/20, 0-3) ; le +1 du niv 25 se déduit du niveau
+  passiveId?: string;
   targetCharacterId?: string;
   createdAt: string; updatedAt: string;
 };
