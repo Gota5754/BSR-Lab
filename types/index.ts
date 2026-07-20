@@ -44,12 +44,12 @@ export type StampPieceRules = {
 };
 
 /* Un personnage équipe exactement 3 stamps (I/II/III) d'un MÊME set,
-   plus 1 core stamp (modélisé plus tard). Les paliers 2p/3p existent en
-   jeu mais tout le monde joue les 3 pièces : un seul texte de bonus. */
+   plus 1 core stamp (modélisé plus tard). */
 export type StampSet = {
   id: string;
   name: string;
-  bonus: string;
+  bonus2pc: string;
+  bonus3pc: string;
   imageUrl: string;
 };
 
@@ -69,9 +69,10 @@ export type Character = {
   damageType: DamageType;
   role: Role;
   rarity: string;
-  releaseDate: string;                       // sortie ~toutes les 3 semaines
-  imageUrl: string;
-  weapon: { name: string; stats: string[]; passive: string };
+  releaseDate?: string;                      // sortie ~toutes les 3 semaines
+  /* Absente tant que l'artwork n'est pas fourni (fallback visuel). */
+  imageUrl?: string;
+  weapon?: { name: string; stats: string[]; passive: string };
   recommendedSets: Array<{
     setId: string;
     priority: number;

@@ -100,19 +100,26 @@ export function CharacterPicker({
                     : "border-bsr-border bg-bsr-ink-2 hover:bg-bsr-ink-3"
                 )}
               >
-                {/* Images préoptimisées au build : pas d'optimisation Vercel. */}
+                {/* Images préoptimisées au build : pas d'optimisation Vercel.
+                   Fallback typographique tant que l'artwork n'est pas fourni. */}
                 <div className="relative aspect-[4/3] w-full bg-bsr-ink-3">
-                  <Image
-                    src={character.imageUrl}
-                    alt=""
-                    fill
-                    unoptimized
-                    sizes="(min-width: 640px) 200px, 45vw"
-                    className={cn(
-                      "object-cover object-top transition-opacity",
-                      selected ? "opacity-100" : "opacity-80"
-                    )}
-                  />
+                  {character.imageUrl ? (
+                    <Image
+                      src={character.imageUrl}
+                      alt=""
+                      fill
+                      unoptimized
+                      sizes="(min-width: 640px) 200px, 45vw"
+                      className={cn(
+                        "object-cover object-top transition-opacity",
+                        selected ? "opacity-100" : "opacity-80"
+                      )}
+                    />
+                  ) : (
+                    <span className="heading-serif absolute inset-0 flex items-center justify-center text-4xl text-bsr-faint">
+                      {character.name.charAt(0)}
+                    </span>
+                  )}
                 </div>
                 <div className="p-3">
                   <span className="heading-serif block text-base leading-tight text-bsr-paper">

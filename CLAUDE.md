@@ -129,7 +129,7 @@ Mécaniques réelles du jeu (validées par Mathieu, 2026-07) :
 ```ts
 type StampSet = {
   id: string; name: string;
-  bonus: string;                             // bonus 3 pièces (le seul cas réel)
+  bonus2pc: string; bonus3pc: string;        // paliers réels fournis par Mathieu (2026-07)
   imageUrl: string;
 };
 
@@ -140,9 +140,9 @@ type Character = {
   damageType: 'Slash'|'Thrust'|'Strike'|'Spirit';
   role: 'Full Assault'|'Support'|'Tactic';
   rarity: string;
-  releaseDate: string;                       // sortie ~toutes les 3 semaines
-  imageUrl: string;
-  weapon: { name: string; stats: string[]; passive: string };
+  releaseDate?: string;                      // sortie ~toutes les 3 semaines
+  imageUrl?: string;                         // absent tant que l'artwork n'est pas fourni (fallback UI)
+  weapon?: { name: string; stats: string[]; passive: string }; // non prioritaire (choix Mathieu)
   recommendedSets: Array<{                   // historique : cas Ichigo Bankai → set Kenpachi
     setId: string; priority: number;
     note?: string; sincePatch: string;
