@@ -8,6 +8,7 @@ export const soifon: Character = {
   damageType: "Strike",
   role: "Tactic",
   rarity: "SSR",
+  imageUrl: "/images/characters/soifon.webp",
   recommendedSets: [
     { setId: "stealth-force", priority: 1, note: "Set signature (Onmitsukidō) : Strike + Ailment Mastery", sincePatch: "Juil. 2026" },
     { setId: "midnight-specter", priority: 2, note: "Alternative Strike", sincePatch: "Juil. 2026" },

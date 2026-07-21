@@ -8,6 +8,7 @@ export const tosen: Character = {
   damageType: "Thrust",
   role: "Tactic",
   rarity: "SSR",
+  imageUrl: "/images/characters/tosen.webp",
   recommendedSets: [
     { setId: "knights-anthem", priority: 1, note: "Thrust + Ailment Bonus équipe après Battlefield Skill", sincePatch: "Juil. 2026" },
     { setId: "mocking-visage", priority: 2, note: "Alternative ailment", sincePatch: "Juil. 2026" },

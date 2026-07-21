@@ -8,6 +8,7 @@ export const grimmjowJaegerjack: Character = {
   damageType: "Strike",
   role: "Full Assault",
   rarity: "SR+",
+  imageUrl: "/images/characters/grimmjow-jaegerjack.webp",
   recommendedSets: [
     { setId: "ready-to-go", priority: 1, note: "ATK +20% et Crit DMG +50% génériques", sincePatch: "Juil. 2026" },
     { setId: "midnight-specter", priority: 2, note: "Alternative Strike/Ultimate", sincePatch: "Juil. 2026" },

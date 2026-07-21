@@ -8,6 +8,7 @@ export const sado: Character = {
   damageType: "Strike",
   role: "Full Assault",
   rarity: "SR",
+  imageUrl: "/images/characters/sado.webp",
   recommendedSets: [
     { setId: "midnight-specter", priority: 1, note: "Strike + Ultimate DMG", sincePatch: "Juil. 2026" },
     { setId: "beast-tyrant", priority: 2, note: "Générique ATK", sincePatch: "Juil. 2026" },

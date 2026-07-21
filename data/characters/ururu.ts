@@ -8,6 +8,7 @@ export const ururu: Character = {
   damageType: "Spirit",
   role: "Full Assault",
   rarity: "SR",
+  imageUrl: "/images/characters/ururu.webp",
   recommendedSets: [
     { setId: "world-conquest", priority: 1, note: "Techniques → basic attacks", sincePatch: "Juil. 2026" },
     { setId: "fill-the-nothingness", priority: 2, note: "Alternative Spirit", sincePatch: "Juil. 2026" },

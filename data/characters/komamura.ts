@@ -8,6 +8,7 @@ export const komamura: Character = {
   damageType: "Strike",
   role: "Tactic",
   rarity: "SSR",
+  imageUrl: "/images/characters/komamura.webp",
   recommendedSets: [
     { setId: "inner-fang", priority: 1, note: "Battlefield Skill DMG stacking (estimation, pas de guide publié)", sincePatch: "Juil. 2026" },
     { setId: "stealth-force", priority: 2, note: "Strike DMG +30% après Battlefield Skill", sincePatch: "Juil. 2026" },

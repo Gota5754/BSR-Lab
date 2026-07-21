@@ -8,6 +8,7 @@ export const ulquiorraCiferSr: Character = {
   damageType: "Spirit",
   role: "Full Assault",
   rarity: "SR+",
+  imageUrl: "/images/characters/ulquiorra-cifer-sr.webp",
   recommendedSets: [
     { setId: "ready-to-go", priority: 1, note: "ATK +20% et Crit DMG +50% génériques", sincePatch: "Juil. 2026" },
     { setId: "fill-the-nothingness", priority: 2, note: "Alternative Spirit", sincePatch: "Juil. 2026" },

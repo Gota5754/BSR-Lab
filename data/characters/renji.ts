@@ -8,6 +8,7 @@ export const renji: Character = {
   damageType: "Thrust",
   role: "Full Assault",
   rarity: "SR",
+  imageUrl: "/images/characters/renji.webp",
   recommendedSets: [
     { setId: "unyielding-light", priority: 1, note: "Special attack +30%", sincePatch: "Juil. 2026" },
     { setId: "knights-anthem", priority: 2, note: "Alternative Thrust", sincePatch: "Juil. 2026" },

@@ -8,6 +8,7 @@ export const ulquiorra: Character = {
   damageType: "Spirit",
   role: "Full Assault",
   rarity: "SSR",
+  imageUrl: "/images/characters/ulquiorra.webp",
   recommendedSets: [
     { setId: "fill-the-nothingness", priority: 1, note: "Stacking Technique/Ultimate DMG", sincePatch: "Juil. 2026" },
     { setId: "world-conquest", priority: 2, note: "Alternative Spirit", sincePatch: "Juil. 2026" },

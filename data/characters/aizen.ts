@@ -8,6 +8,7 @@ export const aizen: Character = {
   damageType: "Spirit",
   role: "Tactic",
   rarity: "SSR",
+  imageUrl: "/images/characters/aizen.webp",
   recommendedSets: [
     { setId: "immeasurable-gap", priority: 1, note: "Battlefield Skill +30% et +10% all DMG", sincePatch: "Juil. 2026" },
     { setId: "curtain-falls", priority: 2, note: "Alternative Spirit support", sincePatch: "Juil. 2026" },

@@ -8,6 +8,7 @@ export const grimmjowPantera: Character = {
   damageType: "Strike",
   role: "Full Assault",
   rarity: "SSR",
+  imageUrl: "/images/characters/grimmjow-pantera.webp",
   recommendedSets: [
     { setId: "becoming-the-king", priority: 1, note: "Set signature : Lacerate → ATK +18% / Crit DMG +60%", sincePatch: "Juil. 2026" },
     { setId: "midnight-specter", priority: 2, note: "Alternative Strike", sincePatch: "Juil. 2026" },

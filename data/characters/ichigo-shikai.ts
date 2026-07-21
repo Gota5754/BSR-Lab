@@ -8,6 +8,7 @@ export const ichigoShikai: Character = {
   damageType: "Slash",
   role: "Full Assault",
   rarity: "SR",
+  imageUrl: "/images/characters/ichigo-shikai.webp",
   recommendedSets: [
     { setId: "beast-tyrant", priority: 1, note: "Générique ATK + buffs aléatoires", sincePatch: "Juil. 2026" },
     { setId: "rising-black-moon", priority: 2, note: "Alternative Slash", sincePatch: "Juil. 2026" },

@@ -8,6 +8,7 @@ export const momo: Character = {
   damageType: "Spirit",
   role: "Support",
   rarity: "SR",
+  imageUrl: "/images/characters/momo.webp",
   recommendedSets: [
     { setId: "hidden-wisdom", priority: 1, note: "Buff équipe +10% all DMG", sincePatch: "Juil. 2026" },
     { setId: "blooming-sakura", priority: 2, note: "Alternative UCR", sincePatch: "Juil. 2026" },

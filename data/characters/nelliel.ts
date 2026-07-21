@@ -8,6 +8,7 @@ export const nelliel: Character = {
   damageType: "Thrust",
   role: "Tactic",
   rarity: "SSR",
+  imageUrl: "/images/characters/nelliel.webp",
   recommendedSets: [
     { setId: "knights-anthem", priority: 1, note: "Thrust + Ailment équipe ; UCR élevé recommandé", sincePatch: "Juil. 2026" },
     { setId: "mocking-visage", priority: 2, note: "Alternative ailment", sincePatch: "Juil. 2026" },

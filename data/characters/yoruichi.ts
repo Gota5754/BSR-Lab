@@ -8,6 +8,7 @@ export const yoruichi: Character = {
   damageType: "Strike",
   role: "Full Assault",
   rarity: "SSR",
+  imageUrl: "/images/characters/yoruichi.webp",
   recommendedSets: [
     { setId: "ready-to-go", priority: 1, note: "Ult +30%, special attacks via basics", sincePatch: "Juil. 2026" },
     { setId: "midnight-specter", priority: 2, note: "Générique ATK", sincePatch: "Juil. 2026" },

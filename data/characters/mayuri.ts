@@ -8,6 +8,7 @@ export const mayuri: Character = {
   damageType: "Thrust",
   role: "Support",
   rarity: "SSR",
+  imageUrl: "/images/characters/mayuri.webp",
   recommendedSets: [
     { setId: "sample-collection", priority: 1, note: "Set signature : Poison → ATK équipe +5%/stack", sincePatch: "Juil. 2026" },
     { setId: "blooming-sakura", priority: 2, note: "Alternative UCR", sincePatch: "Juil. 2026" },

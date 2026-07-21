@@ -8,6 +8,7 @@ export const yachiru: Character = {
   damageType: "Slash",
   role: "Full Assault",
   rarity: "SR",
+  imageUrl: "/images/characters/yachiru.webp",
   recommendedSets: [
     { setId: "blooming-sakura", priority: 1, note: "UCR pour cycler l'ult (+50% Crit Rate équipe) (estimation)", sincePatch: "Juil. 2026" },
     { setId: "mindscape-encroachment", priority: 2, note: "Team Slash (estimation)", sincePatch: "Juil. 2026" },

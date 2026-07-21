@@ -8,6 +8,7 @@ export const gin: Character = {
   damageType: "Thrust",
   role: "Full Assault",
   rarity: "SSR",
+  imageUrl: "/images/characters/gin.webp",
   recommendedSets: [
     { setId: "mocking-visage", priority: 1, note: "Ailment +50%, débuffs → Thrust/Technique/Ult DMG", sincePatch: "Juil. 2026" },
     { setId: "knights-anthem", priority: 2, note: "Alternative Thrust crit", sincePatch: "Juil. 2026" },

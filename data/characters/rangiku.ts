@@ -8,6 +8,7 @@ export const rangiku: Character = {
   damageType: "Thrust",
   role: "Support",
   rarity: "SR",
+  imageUrl: "/images/characters/rangiku.webp",
   recommendedSets: [
     { setId: "mocking-visage", priority: 1, note: "Ailment +50% (AniGacha) ; Hideout conseille plutôt Hidden Wisdom", sincePatch: "Juil. 2026" },
     { setId: "hidden-wisdom", priority: 2, note: "Buff équipe (choix Hideout Guides)", sincePatch: "Juil. 2026" },

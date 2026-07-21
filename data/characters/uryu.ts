@@ -8,6 +8,7 @@ export const uryu: Character = {
   damageType: "Thrust",
   role: "Tactic",
   rarity: "SR",
+  imageUrl: "/images/characters/uryu.webp",
   recommendedSets: [
     { setId: "inner-fang", priority: 1, note: "Battlefield Skill DMG (Sprenger)", sincePatch: "Juil. 2026" },
     { setId: "knights-anthem", priority: 2, note: "Alternative Thrust", sincePatch: "Juil. 2026" },

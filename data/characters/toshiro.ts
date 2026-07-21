@@ -8,6 +8,7 @@ export const toshiro: Character = {
   damageType: "Spirit",
   role: "Full Assault",
   rarity: "SSR",
+  imageUrl: "/images/characters/toshiro.webp",
   recommendedSets: [
     { setId: "world-conquest", priority: 1, note: "Ult +30%, techniques → basic attacks +36%", sincePatch: "Juil. 2026" },
     { setId: "fill-the-nothingness", priority: 2, note: "Alternative Spirit", sincePatch: "Juil. 2026" },

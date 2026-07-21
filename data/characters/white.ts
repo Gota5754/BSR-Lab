@@ -8,6 +8,7 @@ export const white: Character = {
   damageType: "Slash",
   role: "Tactic",
   rarity: "SSR",
+  imageUrl: "/images/characters/white.webp",
   recommendedSets: [
     { setId: "mindscape-encroachment", priority: 1, note: "Set signature : Slash Mastery équipe + counters", sincePatch: "Juil. 2026" },
     { setId: "rising-black-moon", priority: 2, note: "Alternative Slash", sincePatch: "Juil. 2026" },

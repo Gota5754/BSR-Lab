@@ -8,6 +8,7 @@ export const orihime: Character = {
   damageType: "Spirit",
   role: "Support",
   rarity: "SR",
+  imageUrl: "/images/characters/orihime.webp",
   recommendedSets: [
     { setId: "hidden-wisdom", priority: 1, note: "Buff équipe + HP de base +16%", sincePatch: "Juil. 2026" },
     { setId: "blooming-sakura", priority: 2, note: "Alternative UCR", sincePatch: "Juil. 2026" },

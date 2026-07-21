@@ -8,6 +8,7 @@ export const ichigoInitial: Character = {
   damageType: "Slash",
   role: "Full Assault",
   rarity: "SR",
+  imageUrl: "/images/characters/ichigo-initial.webp",
   recommendedSets: [
     { setId: "rising-black-moon", priority: 1, note: "Slash + special attacks", sincePatch: "Juil. 2026" },
     { setId: "beast-tyrant", priority: 2, note: "Générique ATK", sincePatch: "Juil. 2026" },

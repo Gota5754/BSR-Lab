@@ -8,6 +8,7 @@ export const ikkaku: Character = {
   damageType: "Thrust",
   role: "Full Assault",
   rarity: "SSR",
+  imageUrl: "/images/characters/ikkaku.webp",
   recommendedSets: [
     { setId: "unyielding-light", priority: 1, note: "Special attack +30% (estimation, pas de guide publié)", sincePatch: "Juil. 2026" },
     { setId: "knights-anthem", priority: 2, note: "Alternative Thrust", sincePatch: "Juil. 2026" },

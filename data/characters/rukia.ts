@@ -8,6 +8,7 @@ export const rukia: Character = {
   damageType: "Spirit",
   role: "Tactic",
   rarity: "SR",
+  imageUrl: "/images/characters/rukia.webp",
   recommendedSets: [
     { setId: "blooming-sakura", priority: 1, note: "UCR + Battlefield Skill", sincePatch: "Juil. 2026" },
     { setId: "hidden-wisdom", priority: 2, note: "Alternative support", sincePatch: "Juil. 2026" },

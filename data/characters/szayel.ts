@@ -8,6 +8,7 @@ export const szayel: Character = {
   damageType: "Spirit",
   role: "Support",
   rarity: "SSR",
+  imageUrl: "/images/characters/szayel.webp",
   recommendedSets: [
     { setId: "curtain-falls", priority: 1, note: "Buffs Spirit d'équipe via counters/ultimate", sincePatch: "Juil. 2026" },
     { setId: "hidden-wisdom", priority: 2, note: "Alternative support", sincePatch: "Juil. 2026" },

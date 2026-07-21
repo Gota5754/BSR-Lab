@@ -8,6 +8,7 @@ export const ichigoDualZangetsu: Character = {
   damageType: "Thrust",
   role: "Full Assault",
   rarity: "SSR",
+  imageUrl: "/images/characters/ichigo-dual-zangetsu.webp",
   recommendedSets: [
     { setId: "duty-borne", priority: 1, note: "Set signature : Breach → Ultimate DMG", sincePatch: "Juil. 2026" },
     { setId: "knights-anthem", priority: 2, note: "Alternative Thrust", sincePatch: "Juil. 2026" },
