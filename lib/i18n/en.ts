@@ -17,6 +17,8 @@ export const en: Dict = {
     patchLine: (patch: string) => `data up to date for patch ${patch}`,
   },
 
+  support: "Support",
+
   dataDisclaimer: (patch: string) => `Data up to date for patch ${patch}`,
 
   pages: {

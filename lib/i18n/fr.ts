@@ -17,6 +17,8 @@ export const fr = {
     patchLine: (patch: string) => `données à jour du patch ${patch}`,
   },
 
+  support: "Soutenir",
+
   dataDisclaimer: (patch: string) => `Données à jour du patch ${patch}`,
 
   pages: {

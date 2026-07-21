@@ -6,6 +6,7 @@ export const siteConfig = {
     "La référence communautaire francophone de Bleach: Soul Resonance : évaluateur de Set Stamps, tier list des personnages, calculateur de ressources et guides de build.",
   url: "https://bsr-lab.vercel.app",
   repo: "https://github.com/Gota5754/BSR-Lab",
+  kofi: "https://ko-fi.com/gota574",
   currentPatch: "Juil. 2026",
   disclaimer:
     "Site non affilié — Bleach: Soul Resonance est une marque de ses ayants droit.",

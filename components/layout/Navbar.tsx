@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Heart, Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { useT } from "@/lib/i18n";
 import { LanguageToggle } from "./LanguageToggle";
@@ -46,6 +46,16 @@ export function Navbar() {
             })}
           </nav>
 
+          <a
+            href={siteConfig.kofi}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-1.5 rounded-md border border-bsr-border px-3 py-1.5 text-sm text-bsr-paper-dim transition-colors hover:border-bsr-reiatsu/60 hover:text-bsr-paper sm:inline-flex"
+          >
+            <Heart className="size-4 text-bsr-reiatsu" />
+            {t.support}
+          </a>
+
           <LanguageToggle />
 
           <button
@@ -80,6 +90,16 @@ export function Navbar() {
               </Link>
             );
           })}
+          <a
+            href={siteConfig.kofi}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 rounded-md px-3 py-2.5 text-sm text-bsr-paper-dim hover:bg-bsr-ink-3 hover:text-bsr-paper"
+          >
+            <Heart className="size-4 text-bsr-reiatsu" />
+            {t.support}
+          </a>
         </nav>
       )}
     </header>

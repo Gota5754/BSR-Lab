@@ -7,7 +7,7 @@ import type { TierEntry } from "@/types";
 export const tierList: TierEntry[] = [
   {
     characterId: "ichigo-bankai",
-    tier: "B",
+    tier: "A",
     typeTier: "A",
     note: "Un ancien DPS qui a souffert de la montée en puissance globale (power creep), car il monopolise trop le terrain en restant figé pendant son attaque spéciale et est désormais surclassé",
     noteEn: "A former top DPS hurt by global power creep: he hogs field time by staying locked in place during his special attack, and is now outclassed",
