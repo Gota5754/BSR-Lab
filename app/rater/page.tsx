@@ -12,11 +12,7 @@ export const metadata: Metadata = {
 export default function RaterPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Outil"
-        title="Rater"
-        description="Évaluez vos Set Stamps substat par substat, avec un score pondéré par personnage."
-      />
+      <PageHeader pageKey="rater" />
       <DataDisclaimer />
       <StampForm />
     </>

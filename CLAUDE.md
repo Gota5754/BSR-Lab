@@ -122,7 +122,7 @@ bsr-stamp-rater/
 Mécaniques réelles du jeu (validées par Mathieu, 2026-07) :
 - **Termes techniques en anglais** : stats (ATK, ATK%, DEF, DEF%, HP, HP%, Crit Rate, Crit DMG, Ultimate Charge Rate, Ailment DMG Bonus, Slash/Thrust/Strike/Spirit DMG Bonus), types de dégâts (Slash/Thrust/Strike/Spirit), rôles (Full Assault/Support/Tactic), noms de sets et de passifs. Seuls les textes d'UI sont en français.
 - Chaque set possède 3 pièces : **Stamp I / II / III**. Basic stats : I = ATK (fixe) + 2e aléatoire parmi DEF/HP/DEF%/HP%/ATK%/(Slash|Thrust|Strike|Spirit) DMG Bonus ; II = DEF (fixe) + 2e parmi ATK/ATK%/DEF%/HP/HP%/Crit Rate/Crit DMG ; III = HP (fixe) + 2e parmi ATK/ATK%/DEF/DEF%/HP%/Ultimate Charge Rate/Ailment DMG Bonus. Seule la 2e basic stat monte avec le niveau du stamp (max 30).
-- **Équipement** : un personnage équipe exactement 3 stamps (I/II/III) d'un MÊME set + 1 **core stamp** (slot séparé, non modélisé pour l'instant). Les paliers de bonus 2p/3p existent mais tout le monde joue les 3 pièces → un seul texte `bonus` par set. Chaque personnage a une liste de sets recommandés (ex. Ichigo Bankai : Ready to Go > Rising Black Moon).
+- **Équipement** : un personnage équipe exactement 3 stamps (I/II/III) d'un MÊME set + 1 **core stamp**. Le core stamp est VOLONTAIREMENT non modélisé (décision Mathieu, 2026-07) : chaque personnage a le sien, il s'obtient en jouant (pas d'invocation, pas de RNG utile) — aucune valeur d'aide à la décision. Chaque personnage a une liste de sets recommandés (ex. Ichigo Bankai : Ready To Go > Rising Black Moon).
 - Chaque stamp a 4 substats parmi 10 : ATK/ATK%/DEF/DEF%/HP/HP%/Crit Rate/Crit DMG/Ultimate Charge Rate/Ailment DMG Bonus. **Pas de rolls** : valeur de base fixe par stat ; aux niv 10/15/20 une substat aléatoire « évolue » (+1× sa base), au niv 25 les 4 évoluent. À l'ascension niv 25 le stamp gagne 1 **passif 6★** aléatoire (liste complète dans `data/stamp-passives.ts`).
 - Scoring : score ABSOLU — 100 = stamp parfait niv 30 (4 meilleures substats, 3 évolutions simples sur la BIS, +1 général du niv 25, passif BIS). Le rater raisonne en nb d'évolutions, jamais en valeurs chiffrées. Un « potentiel » séparé (qualité du tirage des 4 substats) aide à repérer les stamps niv 1 à investir. Constantes dans `lib/scoring/weights.ts`.
 
@@ -198,7 +198,8 @@ Règles impératives :
 - Accessibilité : contraste AA minimum (le orange sur noir passe, vérifier les gris), navigation clavier sur le rater
 - Mobile-first : le rater doit être parfaitement utilisable sur téléphone (usage en jouant)
 - Bandeau `DataDisclaimer` sur chaque page de données : « Données à jour du patch X.Y »
-- Site FR ; structure i18n-ready (textes dans des constantes, pas en dur dans le JSX) mais pas de lib i18n en v1
+- Site FR/EN : tous les textes d'UI passent par les dictionnaires `lib/i18n/fr.ts` + `en.ts` (hook `useT()`, préférence persistée, toggle navbar). JAMAIS de texte d'UI en dur dans le JSX. Le HTML SSG est en FR ; l'i18n SEO (routes /en) est spécifiée dans `docs/ROADMAP-V2-V3.md`
+- Les specs V2/V3 (pages personnage, MDX, tier list communautaire Supabase…) sont dans `docs/ROADMAP-V2-V3.md` — les suivre, ne pas re-concevoir
 
 ## 7. Roadmap
 

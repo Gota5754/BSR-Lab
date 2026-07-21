@@ -11,30 +11,20 @@ import {
 import { SectionCard } from "./SectionCard";
 import { LevelSelect } from "./inputs";
 import { formatNumber, ResourceRow } from "./ResourceRow";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const TEXTS = {
-  title: "Personnage",
-  from: "Niveau actuel",
-  to: "Niveau cible",
-  exp: "EXP nécessaire",
-  kans: "Kans total",
-  essences: "Essences (ascension)",
-  essGreen: "Essences vertes",
-  essBlue: "Essences bleues",
-  essPurple: "Essences violettes",
-  books: "Livres EXP possédés",
-  bookGreen: `Livres verts (${formatNumber(bookExp.green)} EXP)`,
-  bookBlue: `Livres bleus (${formatNumber(bookExp.blue)} EXP)`,
-  bookPurple: `Livres violets (${formatNumber(bookExp.purple)} EXP)`,
-  bookYellow: `Livres jaunes (${formatNumber(bookExp.yellow)} EXP)`,
-  expOwned: "EXP couverte par les livres",
-  booksEnough: "Assez de livres ✓",
-} as const;
 
 const zeroBooks: BookCounts = { green: 0, blue: 0, purple: 0, yellow: 0 };
 
 export function CharacterCalculator() {
+  const base = useT().calc.character;
+  const TEXTS = {
+    ...base,
+    bookGreen: base.book(base.bookColors.green, formatNumber(bookExp.green)),
+    bookBlue: base.book(base.bookColors.blue, formatNumber(bookExp.blue)),
+    bookPurple: base.book(base.bookColors.purple, formatNumber(bookExp.purple)),
+    bookYellow: base.book(base.bookColors.yellow, formatNumber(bookExp.yellow)),
+  };
   const [fromLevel, setFromLevel] = useState(1);
   const [toLevel, setToLevel] = useState(100);
   const [essences, setEssences] = useState({ green: 0, blue: 0, purple: 0 });

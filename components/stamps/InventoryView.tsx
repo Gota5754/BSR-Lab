@@ -10,21 +10,10 @@ import { getCharacters } from "@/lib/data";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { StampCard } from "./StampCard";
 import { InventoryFocus } from "./InventoryFocus";
-
-const TEXTS = {
-  count: (n: number) => `${n} stamp${n > 1 ? "s" : ""} sauvegardé${n > 1 ? "s" : ""}`,
-  filterAll: "Tous les personnages",
-  exportButton: "Exporter (JSON)",
-  importButton: "Importer (JSON)",
-  importSuccess: (n: number) => `${n} stamp${n > 1 ? "s" : ""} importé${n > 1 ? "s" : ""}.`,
-  emptyTitle: "Inventaire vide",
-  emptyDescription:
-    "Évaluez un stamp dans le rater puis sauvegardez-le : il apparaîtra ici, conservé dans votre navigateur.",
-  emptyAction: "Ouvrir le rater",
-  loading: "Chargement de l'inventaire…",
-} as const;
+import { useT } from "@/lib/i18n";
 
 export function InventoryView() {
+  const TEXTS = useT().inventory;
   const hydrated = useHydrated();
   const stamps = useInventoryStore((s) => s.stamps);
   const removeStamp = useInventoryStore((s) => s.removeStamp);
@@ -62,7 +51,7 @@ export function InventoryView() {
       const count = importStamps(imported);
       setMessage(TEXTS.importSuccess(count));
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Import impossible.");
+      setMessage(error instanceof Error ? error.message : TEXTS.importError);
     }
   }
 
@@ -160,6 +149,7 @@ function ImportRow({
   onFile: (file: File) => void;
   message: string | null;
 }) {
+  const TEXTS = useT().inventory;
   return (
     <div className="mt-4 flex items-center gap-3">
       <button

@@ -12,11 +12,7 @@ export const metadata: Metadata = {
 export default function TierListPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Outil"
-        title="Tier list"
-        description="Le classement des personnages, mis à jour à chaque patch avec justifications."
-      />
+      <PageHeader pageKey="tierList" />
       <DataDisclaimer />
       <TierListBoard />
     </>

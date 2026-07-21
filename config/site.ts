@@ -9,12 +9,13 @@ export const siteConfig = {
   currentPatch: "Juil. 2026",
   disclaimer:
     "Site non affilié — Bleach: Soul Resonance est une marque de ses ayants droit.",
+  /* labelKey : clé du libellé dans lib/i18n (dict.nav). */
   nav: [
-    { href: "/rater", label: "Rater" },
-    { href: "/tier-list", label: "Tier list" },
-    { href: "/calculator", label: "Calculateur" },
-    { href: "/inventory", label: "Inventaire" },
-    { href: "/teams", label: "Équipes" },
+    { href: "/rater", labelKey: "rater" },
+    { href: "/tier-list", labelKey: "tierList" },
+    { href: "/calculator", labelKey: "calculator" },
+    { href: "/inventory", labelKey: "inventory" },
+    { href: "/teams", labelKey: "teams" },
   ],
 } as const;
 

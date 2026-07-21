@@ -12,27 +12,8 @@ import {
 import { SectionCard } from "./SectionCard";
 import { LevelSelect } from "./inputs";
 import { formatNumber, ResourceRow } from "./ResourceRow";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const TEXTS = {
-  title: "Arme",
-  from: "Niveau actuel",
-  to: "Niveau cible",
-  tamaExp: "EXP Tamahagane nécessaire",
-  kans: "Kans total",
-  gold: "Or total",
-  hammers: "Marteaux (ascension)",
-  hamGreen: "Marteaux verts",
-  hamBlue: "Marteaux bleus",
-  hamPurple: "Marteaux violets",
-  tama: "Tamahagane possédés",
-  tamaGreen: `Tamahagane verts (${formatNumber(tamahaganeExp.green)} EXP)`,
-  tamaBlue: `Tamahagane bleus (${formatNumber(tamahaganeExp.blue)} EXP)`,
-  tamaPurple: `Tamahagane violets (${formatNumber(tamahaganeExp.purple)} EXP)`,
-  tamaYellow: `Tamahagane jaunes (${formatNumber(tamahaganeExp.yellow)} EXP)`,
-  expOwned: "EXP couverte par les Tamahagane",
-  tamaEnough: "Assez de Tamahagane ✓",
-} as const;
 
 const zeroCounts: BookCounts = { green: 0, blue: 0, purple: 0, yellow: 0 };
 
@@ -40,6 +21,14 @@ const zeroCounts: BookCounts = { green: 0, blue: 0, purple: 0, yellow: 0 };
 const WEAPON_LEVEL_STEPS = LEVEL_STEPS.filter((l) => l >= WEAPON_MIN_LEVEL);
 
 export function WeaponCalculator() {
+  const base = useT().calc.weapon;
+  const TEXTS = {
+    ...base,
+    tamaGreen: base.tamaItem(base.tamaColors.green, formatNumber(tamahaganeExp.green)),
+    tamaBlue: base.tamaItem(base.tamaColors.blue, formatNumber(tamahaganeExp.blue)),
+    tamaPurple: base.tamaItem(base.tamaColors.purple, formatNumber(tamahaganeExp.purple)),
+    tamaYellow: base.tamaItem(base.tamaColors.yellow, formatNumber(tamahaganeExp.yellow)),
+  };
   const [fromLevel, setFromLevel] = useState(WEAPON_MIN_LEVEL);
   const [toLevel, setToLevel] = useState(100);
   const [hammers, setHammers] = useState({ green: 0, blue: 0, purple: 0 });

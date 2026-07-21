@@ -7,14 +7,8 @@ import {
 } from "@/lib/scoring/focus";
 import type { StampPieceId, UserStamp } from "@/types";
 import { GradeBadge } from "./GradeBadge";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const TEXTS = {
-  title: "Priorités d'amélioration",
-  hint: "Basé sur les stamps assignés à chaque personnage (pièces I/II/III d'un même set).",
-  missing: (piece: StampPieceId) => `Stamp ${piece} manquant`,
-  weakest: (piece: StampPieceId) => `Maillon faible : Stamp ${piece}`,
-} as const;
 
 const PIECES: StampPieceId[] = ["I", "II", "III"];
 
@@ -27,6 +21,7 @@ type InventoryFocusProps = {
 };
 
 export function InventoryFocus({ stamps }: InventoryFocusProps) {
+  const TEXTS = useT().focus;
   const report = buildFocusReport(stamps, getCharacters(), getStampPassives());
   if (report.length === 0) return null;
 
@@ -44,6 +39,7 @@ export function InventoryFocus({ stamps }: InventoryFocusProps) {
 }
 
 function FocusRow({ focus }: { focus: CharacterFocus }) {
+  const TEXTS = useT().focus;
   const character = getCharacters().find((c) => c.id === focus.characterId);
   if (!character || !focus.weakest) return null;
 

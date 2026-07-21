@@ -13,28 +13,8 @@ import {
   type StampConfig,
 } from "./StampConfigurator";
 import { ScoreBreakdown } from "./ScoreBreakdown";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const TEXTS = {
-  compareOn: "Comparer 2 stamps",
-  compareOff: "Quitter la comparaison",
-  save: "Sauvegarder dans l'inventaire",
-  saved: "Sauvegardé",
-  recommendedSets: "Sets recommandés",
-  stampA: "Stamp A",
-  stampB: "Stamp B",
-  reset: "Réinitialiser",
-  emptyState:
-    "Choisissez la 2e basic stat du stamp pour voir son score en temps réel.",
-  emptyStateCompare:
-    "Renseignez la 2e basic stat des deux stamps pour obtenir le verdict.",
-  verdictKeep: (label: string) => `Gardez le ${label}`,
-  verdictTie: "Égalité — gardez celui qui coûte le moins à monter",
-  verdictDelta: (points: string) => `+${points} points`,
-  verdictPotential: "Départagés au potentiel des substats",
-  verdictPieceWarning:
-    "Pièces différentes : comparaison indicative (elles n'occupent pas le même emplacement).",
-} as const;
 
 function evaluate(
   config: StampConfig,
@@ -77,6 +57,7 @@ function computeVerdict(a: StampEvaluation, b: StampEvaluation): Verdict {
 }
 
 export function StampForm() {
+  const TEXTS = useT().rater;
   const characters = getCharacters();
 
   const [characterId, setCharacterId] = useState(characters[0]?.id ?? "");

@@ -5,22 +5,11 @@ import { calcPulls, HARD_PITY, PULL_COST } from "@/lib/calculator/costs";
 import { SectionCard } from "./SectionCard";
 import { NumberField } from "./inputs";
 import { formatNumber } from "./ResourceRow";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const TEXTS = {
-  title: "Invocations",
-  crystals: "Cristaux actuels",
-  pity: `Pity actuelle (garantie à ${HARD_PITY})`,
-  days: "Jours avant le banner",
-  daily: "Cristaux gagnés / jour",
-  pulls: "Pulls estimés",
-  needed: "Pour la garantie",
-  enough: "Suffisant",
-  missing: "Manquants",
-  missingCrystals: (n: string) => `Il manque ${n} cristaux (${PULL_COST}/pull).`,
-} as const;
-
 export function PullCalculator() {
+  const TEXTS = useT().calc.pull;
   const [crystals, setCrystals] = useState(0);
   const [pity, setPity] = useState(0);
   const [days, setDays] = useState(0);
@@ -37,7 +26,7 @@ export function PullCalculator() {
     <SectionCard title={TEXTS.title}>
       <div className="grid grid-cols-2 gap-3">
         <NumberField label={TEXTS.crystals} value={crystals} onChange={setCrystals} />
-        <NumberField label={TEXTS.pity} value={pity} onChange={setPity} max={HARD_PITY - 1} />
+        <NumberField label={TEXTS.pity(HARD_PITY)} value={pity} onChange={setPity} max={HARD_PITY - 1} />
         <NumberField label={TEXTS.days} value={days} onChange={setDays} />
         <NumberField label={TEXTS.daily} value={daily} onChange={setDaily} placeholder="30" />
       </div>
@@ -72,7 +61,7 @@ export function PullCalculator() {
         </div>
         {!result.enough && (
           <p className="mt-3 text-center text-xs text-bsr-muted">
-            {TEXTS.missingCrystals(formatNumber(result.missingCrystals))}
+            {TEXTS.missingCrystals(formatNumber(result.missingCrystals), PULL_COST)}
           </p>
         )}
       </div>

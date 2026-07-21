@@ -1,13 +1,8 @@
 "use client";
 
 import type { DamageType, Role } from "@/types";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const TEXTS = {
-  all: "Tous",
-  roleLabel: "Rôle",
-  typeLabel: "Type de dégâts",
-} as const;
 
 export const ROLES: Role[] = ["Full Assault", "Support", "Tactic"];
 export const DAMAGE_TYPES: DamageType[] = [
@@ -38,6 +33,7 @@ function ChipGroup<T extends string>({
   selected: T | null;
   onSelect: (value: T | null) => void;
 }) {
+  const TEXTS = useT().tierList;
   return (
     <div className="flex flex-wrap items-center gap-1.5">
       <span className="eyebrow mr-1">{label}</span>
@@ -62,6 +58,7 @@ function ChipGroup<T extends string>({
 }
 
 export function TierListFilters({ value, onChange }: TierListFiltersProps) {
+  const TEXTS = useT().tierList;
   return (
     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-8">
       <ChipGroup

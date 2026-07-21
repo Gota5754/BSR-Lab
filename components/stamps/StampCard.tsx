@@ -10,18 +10,8 @@ import {
 } from "@/lib/data";
 import { getStampPassives } from "@/lib/data";
 import { evaluateStamp } from "@/lib/scoring/engine";
+import { useT } from "@/lib/i18n";
 import { GradeBadge } from "./GradeBadge";
-
-const TEXTS = {
-  unknownSet: "Set inconnu",
-  levelPrefix: "Niv",
-  basicPrefix: "2e basic :",
-  targetPrefix: "Pour",
-  noTarget: "Aucun personnage cible",
-  potentialShort: "potentiel",
-  evolutionsShort: "évo",
-  remove: "Supprimer ce stamp",
-} as const;
 
 type StampCardProps = {
   stamp: UserStamp;
@@ -29,6 +19,7 @@ type StampCardProps = {
 };
 
 export function StampCard({ stamp, onRemove }: StampCardProps) {
+  const TEXTS = useT().stampCard;
   const set = getStampSet(stamp.setId);
   const character = stamp.targetCharacterId
     ? getCharacter(stamp.targetCharacterId)

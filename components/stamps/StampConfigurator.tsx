@@ -14,25 +14,8 @@ import {
 } from "@/lib/scoring/engine";
 import type { Character, StampPieceId } from "@/types";
 import { SubstatInput } from "./SubstatInput";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const TEXTS = {
-  pieceLegend: "Pièce",
-  piecePrefix: "Stamp",
-  fixedBasicPrefix: "Basic stat fixe :",
-  levelLegend: "Niveau du stamp",
-  levelPrefix: "Niv",
-  secondBasicLabel: "2e basic stat",
-  recommendedSuffix: " (recommandée)",
-  substatsLegend: "Substats",
-  budgetHint: (used: number, total: number) =>
-    `Évolutions simples (niv 10/15/20) : ${used}/${total} réparties`,
-  level25Hint: "Niv 25 : +1 automatique sur les 4 substats",
-  passiveLabel: "Passif 6★",
-  passivePlaceholder: "— Passif non renseigné —",
-  passiveLocked: "Ascension niv 25 requise pour le passif 6★",
-  passiveAffinityOk: "Affinité avec le rôle du personnage",
-} as const;
 
 const PIECES: StampPieceId[] = ["I", "II", "III"];
 
@@ -71,6 +54,7 @@ export function StampConfigurator({
   uid,
   labelPrefix = "",
 }: StampConfiguratorProps) {
+  const TEXTS = useT().configurator;
   const substatPool = getSubstatPool();
   const passives = getStampPassives();
   const rules = getPieceRules(config.piece);

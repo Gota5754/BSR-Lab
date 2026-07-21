@@ -4,27 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion, animate } from "motion/react";
 import type { PassiveStatus, StampEvaluation } from "@/lib/scoring/engine";
 import { getStat } from "@/lib/data";
+import { useT } from "@/lib/i18n";
 import { GradeBadge } from "./GradeBadge";
-
-const TEXTS = {
-  scoreLabel: "Score",
-  potentialLabel: "Potentiel des substats",
-  basicStatOk: "2e basic stat recommandée",
-  basicStatOff: "2e basic stat hors méta",
-  passiveLabel: "Passif",
-  breakdownTitle: "Contribution des substats",
-  emptyBreakdown: "Aucune substat renseignée.",
-  evolutionsShort: "évo",
-} as const;
-
-const PASSIVE_STATUS_TEXTS: Record<PassiveStatus, string> = {
-  "not-ascended": "Pas encore de passif (niv < 25)",
-  unknown: "Passif non renseigné",
-  bis: "Passif BIS pour ce personnage",
-  "role-match": "Passif avec affinité de rôle",
-  generic: "Passif générique",
-  "role-mismatch": "Passif d'un autre rôle (bonus perdu)",
-};
 
 function formatScore(value: number): string {
   return value.toFixed(1).replace(".", ",");
@@ -44,6 +25,9 @@ type ScoreBreakdownProps = {
 };
 
 export function ScoreBreakdown({ evaluation, title }: ScoreBreakdownProps) {
+  const TEXTS = useT().breakdown;
+  const PASSIVE_STATUS_TEXTS: Record<PassiveStatus, string> =
+    TEXTS.passiveStatus;
   const [displayed, setDisplayed] = useState(0);
   const previousScore = useRef(0);
   const topShare = Math.max(...evaluation.breakdown.map((b) => b.share), 0);

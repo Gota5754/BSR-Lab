@@ -10,20 +10,7 @@ import {
 import { SectionCard } from "./SectionCard";
 import { LevelSelect } from "./inputs";
 import { formatNumber, ResourceRow } from "./ResourceRow";
-
-const TEXTS = {
-  title: "Compétences & passifs",
-  from: "Niv. actuel",
-  to: "Niv. cible",
-  numSkills: "Nb compétences",
-  artGreen: "Arts verts",
-  artBlue: "Arts bleus",
-  artPurple: "Arts violets",
-  passives: "Passifs (niveau cible)",
-  passiveLabel: (i: number) => `Passif ${i}`,
-  omamori: "Omamori",
-  totalKans: "Kans total (compétences + passifs)",
-} as const;
+import { useT } from "@/lib/i18n";
 
 const SKILL_LEVELS = Array.from({ length: SKILL_MAX_LEVEL }, (_, i) => i + 1);
 const PASSIVE_LEVELS = Array.from(
@@ -32,6 +19,7 @@ const PASSIVE_LEVELS = Array.from(
 );
 
 export function SkillCalculator() {
+  const TEXTS = useT().calc.skills;
   const [fromLevel, setFromLevel] = useState(1);
   const [toLevel, setToLevel] = useState(SKILL_MAX_LEVEL);
   const [numSkills, setNumSkills] = useState(4);

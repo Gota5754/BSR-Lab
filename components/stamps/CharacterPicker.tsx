@@ -4,14 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { Search } from "lucide-react";
 import type { Character } from "@/types";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const TEXTS = {
-  legend: "Personnage",
-  searchPlaceholder: "Rechercher un personnage…",
-  allRarities: "Tous",
-  noResult: "Aucun personnage ne correspond.",
-} as const;
 
 /* Raretés du jeu, de la plus haute à la plus basse. */
 const RARITIES = ["SSR", "SR+", "SR"] as const;
@@ -36,6 +30,7 @@ export function CharacterPicker({
 }: CharacterPickerProps) {
   const [query, setQuery] = useState("");
   const [rarity, setRarity] = useState<string | null>(null);
+  const TEXTS = useT().picker;
 
   const filtered = characters.filter(
     (c) =>

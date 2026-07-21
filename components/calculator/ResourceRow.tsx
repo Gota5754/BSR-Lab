@@ -1,5 +1,6 @@
 "use client";
 
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 export function formatNumber(value: number): string {
@@ -21,6 +22,7 @@ export function ResourceRow({
   owned,
   onOwned,
 }: ResourceRowProps) {
+  const t = useT();
   const trackable = owned !== undefined && onOwned !== undefined;
   const hasTarget = needed !== undefined;
   const done = trackable && hasTarget && owned >= needed;
@@ -61,7 +63,7 @@ export function ResourceRow({
         <input
           type="number"
           inputMode="numeric"
-          aria-label={`${label} possédés`}
+          aria-label={`${label} ${t.calc.ownedAria}`}
           min={0}
           value={owned === 0 ? "" : owned}
           placeholder="0"

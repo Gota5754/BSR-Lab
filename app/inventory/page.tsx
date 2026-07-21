@@ -12,11 +12,7 @@ export const metadata: Metadata = {
 export default function InventoryPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Outil"
-        title="Inventaire"
-        description="Vos stamps évalués, sauvegardés localement dans votre navigateur. Exportez le JSON pour changer d'appareil."
-      />
+      <PageHeader pageKey="inventory" />
       <DataDisclaimer />
       <InventoryView />
     </>

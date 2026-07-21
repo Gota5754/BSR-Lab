@@ -2,17 +2,13 @@
 
 import { Minus, Plus } from "lucide-react";
 import type { Stat } from "@/types";
-import { getWeightLabel, MAX_SINGLE_EVOLUTIONS } from "@/lib/scoring/weights";
+import {
+  getWeightTier,
+  MAX_SINGLE_EVOLUTIONS,
+  type WeightTier,
+} from "@/lib/scoring/weights";
+import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const TEXTS = {
-  placeholder: "— Substat —",
-  evolutionsLabel: "Évolutions simples",
-  decrease: "Retirer une évolution",
-  increase: "Ajouter une évolution",
-  level25Bonus: "+1",
-  level25BonusTitle: "Évolution générale du niv 25 (automatique)",
-} as const;
 
 type SubstatInputProps = {
   index: number;
@@ -34,11 +30,11 @@ type SubstatInputProps = {
   onChange: (id: string, evolutions: number) => void;
 };
 
-const weightTagStyles: Record<string, string> = {
-  BIS: "border-bsr-reiatsu/60 text-bsr-reiatsu",
-  Fort: "border-bsr-paper-dim/50 text-bsr-paper-dim",
-  Moyen: "border-bsr-border text-bsr-muted",
-  Faible: "border-bsr-border text-bsr-faint",
+const weightTagStyles: Record<WeightTier, string> = {
+  bis: "border-bsr-reiatsu/60 text-bsr-reiatsu",
+  strong: "border-bsr-paper-dim/50 text-bsr-paper-dim",
+  medium: "border-bsr-border text-bsr-muted",
+  weak: "border-bsr-border text-bsr-faint",
 };
 
 export function SubstatInput({
@@ -53,7 +49,9 @@ export function SubstatInput({
   weight,
   onChange,
 }: SubstatInputProps) {
-  const label = selectedId ? getWeightLabel(weight) : null;
+  const t = useT();
+  const TEXTS = t.substat;
+  const tier = selectedId ? getWeightTier(weight) : null;
 
   return (
     <div className="flex items-center gap-2">
@@ -114,9 +112,7 @@ export function SubstatInput({
         title={TEXTS.level25BonusTitle}
         className={cn(
           "tabular w-7 text-center text-xs",
-          hasLevel25Bonus && selectedId
-            ? "text-bsr-paper-dim"
-            : "invisible"
+          hasLevel25Bonus && selectedId ? "text-bsr-paper-dim" : "invisible"
         )}
       >
         {TEXTS.level25Bonus}
@@ -125,10 +121,10 @@ export function SubstatInput({
       <span
         className={cn(
           "inline-flex w-14 justify-center rounded border px-1.5 py-0.5 text-[10px] uppercase tracking-wide",
-          label ? weightTagStyles[label] : "invisible border-bsr-border"
+          tier ? weightTagStyles[tier] : "invisible border-bsr-border"
         )}
       >
-        {label ?? "—"}
+        {tier ? t.weightLabels[tier] : "—"}
       </span>
     </div>
   );

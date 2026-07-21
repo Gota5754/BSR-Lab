@@ -16,11 +16,7 @@ export const metadata: Metadata = {
 export default function CalculatorPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Outil"
-        title="Calculateur"
-        description="Estimez les ressources nécessaires pour monter vos personnages, armes, compétences et passifs — et planifiez vos pulls."
-      />
+      <PageHeader pageKey="calculator" />
       <DataDisclaimer />
       <div className="grid items-start gap-4 lg:grid-cols-2">
         <div className="space-y-4">

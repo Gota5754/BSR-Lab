@@ -1,21 +1,24 @@
+"use client";
+
+import { useT, type Dict } from "@/lib/i18n";
+
 type PageHeaderProps = {
-  eyebrow?: string;
-  title: string;
-  description?: string;
+  /* Clé de la page dans dict.pages (titre/description traduits). */
+  pageKey: keyof Dict["pages"];
 };
 
-export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
+export function PageHeader({ pageKey }: PageHeaderProps) {
+  const t = useT();
+  const page = t.pages[pageKey];
   return (
     <div className="mb-8">
-      {eyebrow && <p className="eyebrow mb-2">{eyebrow}</p>}
+      <p className="eyebrow mb-2">{page.eyebrow}</p>
       <h1 className="heading-serif text-4xl text-bsr-paper md:text-5xl">
-        {title}
+        {page.title}
       </h1>
-      {description && (
-        <p className="mt-3 max-w-2xl text-sm text-bsr-paper-dim">
-          {description}
-        </p>
-      )}
+      <p className="mt-3 max-w-2xl text-sm text-bsr-paper-dim">
+        {page.description}
+      </p>
     </div>
   );
 }

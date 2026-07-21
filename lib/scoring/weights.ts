@@ -39,15 +39,18 @@ export const PASSIVE_QUALITY = {
   unknown: 0.5,
 } as const;
 
-/* Étiquettes de pertinence d'une substat selon son poids (UI du rater). */
-export const WEIGHT_TIERS = [
-  { min: 0.9, label: "BIS" },
-  { min: 0.6, label: "Fort" },
-  { min: 0.25, label: "Moyen" },
-  { min: 0, label: "Faible" },
-] as const;
+/* Paliers de pertinence d'une substat selon son poids (UI du rater).
+   Les libellés affichés viennent de lib/i18n (dict.weightLabels). */
+export type WeightTier = "bis" | "strong" | "medium" | "weak";
 
-export function getWeightLabel(weight: number): string {
-  const tier = WEIGHT_TIERS.find((t) => weight >= t.min);
-  return tier ? tier.label : "Faible";
+export const WEIGHT_TIERS: Array<{ min: number; tier: WeightTier }> = [
+  { min: 0.9, tier: "bis" },
+  { min: 0.6, tier: "strong" },
+  { min: 0.25, tier: "medium" },
+  { min: 0, tier: "weak" },
+];
+
+export function getWeightTier(weight: number): WeightTier {
+  const entry = WEIGHT_TIERS.find((t) => weight >= t.min);
+  return entry ? entry.tier : "weak";
 }
