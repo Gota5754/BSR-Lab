@@ -197,6 +197,9 @@ export const fr = {
     all: "Tous",
     roleLabel: "Rôle",
     typeLabel: "Type de dégâts",
+    viewLabel: "Vue",
+    generalTab: "Générale",
+    byTypeTab: "Par type",
   },
 
   calc: {

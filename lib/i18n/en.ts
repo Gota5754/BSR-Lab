@@ -194,6 +194,9 @@ export const en: Dict = {
     all: "All",
     roleLabel: "Role",
     typeLabel: "Damage type",
+    viewLabel: "View",
+    generalTab: "Overall",
+    byTypeTab: "By type",
   },
 
   calc: {

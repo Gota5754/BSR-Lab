@@ -154,9 +154,11 @@ type Character = {
   buildNotes?: string;                        // markdown
 };
 
+type Tier = 'SS'|'S'|'A'|'B'|'C'|'D';
 type TierEntry = {
   characterId: string;
-  tier: 'S' | 'A' | 'B' | 'C';
+  tier: Tier;                                 // classement général
+  typeTier: Tier;                             // classement au sein de son type de dégâts
   note?: string; patchVersion: string;
 };
 

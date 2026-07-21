@@ -89,9 +89,16 @@ export type Character = {
   buildNotes?: string;                        // markdown
 };
 
+/* Tiers de la tier list (SS = au-dessus de S ; distinct des grades de
+   stamps S-D du rater). */
+export type Tier = "SS" | "S" | "A" | "B" | "C" | "D";
+
 export type TierEntry = {
   characterId: string;
-  tier: "S" | "A" | "B" | "C";
+  /* Classement général, tous types confondus. */
+  tier: Tier;
+  /* Classement au sein de son type de dégâts (Slash/Thrust/Strike/Spirit). */
+  typeTier: Tier;
   note?: string;
   patchVersion: string;
 };

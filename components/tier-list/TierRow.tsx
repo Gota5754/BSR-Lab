@@ -1,21 +1,24 @@
 "use client";
 
-import type { Character, TierEntry } from "@/types";
-import { GradeBadge, type Grade } from "@/components/stamps/GradeBadge";
+import type { Character, Tier, TierEntry } from "@/types";
 import { useT } from "@/lib/i18n";
+import { TierBadge } from "./TierBadge";
 import { TierItem } from "./TierItem";
 
 type TierRowProps = {
-  tier: Grade;
+  tier: Tier;
   entries: Array<{ entry: TierEntry; character: Character }>;
+  /* Masquer la rangée si elle est vide (vues par type). */
+  hideWhenEmpty?: boolean;
 };
 
-export function TierRow({ tier, entries }: TierRowProps) {
+export function TierRow({ tier, entries, hideWhenEmpty = false }: TierRowProps) {
   const TEXTS = useT().tierList;
+  if (entries.length === 0 && hideWhenEmpty) return null;
   return (
     <div className="flex flex-col gap-3 border-t border-bsr-border py-5 first:border-t-0 sm:flex-row sm:gap-5">
       <div className="shrink-0 sm:pt-1">
-        <GradeBadge grade={tier} size="lg" />
+        <TierBadge tier={tier} />
       </div>
       {entries.length === 0 ? (
         <p className="self-center text-sm text-bsr-faint">{TEXTS.empty}</p>
