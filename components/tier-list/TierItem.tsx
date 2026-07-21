@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import type { Character, TierEntry } from "@/types";
+import { useLocale } from "@/lib/i18n";
 
 type TierItemProps = {
   entry: TierEntry;
@@ -7,6 +10,9 @@ type TierItemProps = {
 };
 
 export function TierItem({ entry, character }: TierItemProps) {
+  const locale = useLocale();
+  /* Note dans la langue active, repli sur le français. */
+  const note = locale === "en" ? (entry.noteEn ?? entry.note) : entry.note;
   return (
     <div className="flex w-44 shrink-0 flex-col overflow-hidden rounded-[10px] border border-bsr-border bg-bsr-ink-2">
       {/* Images préoptimisées au build : pas d'optimisation Vercel.
@@ -34,9 +40,9 @@ export function TierItem({ entry, character }: TierItemProps) {
         <p className="mt-1 text-[11px] text-bsr-muted">
           {character.role} · {character.damageType}
         </p>
-        {entry.note && (
+        {note && (
           <p className="mt-2 text-[11px] leading-relaxed text-bsr-paper-dim">
-            {entry.note}
+            {note}
           </p>
         )}
       </div>

@@ -159,7 +159,8 @@ type TierEntry = {
   characterId: string;
   tier: Tier;                                 // classement général
   typeTier: Tier;                             // classement au sein de son type de dégâts
-  note?: string; patchVersion: string;
+  note?: string; noteEn?: string;             // justification FR + traduction EN (repli sur note)
+  patchVersion: string;
 };
 
 // Coûts de progression (EXP, Kans, essences, tamahagane, arts, omamori,

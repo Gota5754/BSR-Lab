@@ -99,7 +99,10 @@ export type TierEntry = {
   tier: Tier;
   /* Classement au sein de son type de dégâts (Slash/Thrust/Strike/Spirit). */
   typeTier: Tier;
+  /* Justification en français ; noteEn affichée quand la langue est EN
+     (repli sur note si absente). */
   note?: string;
+  noteEn?: string;
   patchVersion: string;
 };
 
